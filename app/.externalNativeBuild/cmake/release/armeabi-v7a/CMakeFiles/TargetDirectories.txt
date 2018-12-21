@@ -1,9 +1,0 @@
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/chen_native_libs.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/cpp/algorithm/CMakeFiles/edit_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/cpp/algorithm/CMakeFiles/rebuild_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/cpp/algorithm/CMakeFiles/algorithm.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/cpp/helloworld/CMakeFiles/edit_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/cpp/helloworld/CMakeFiles/rebuild_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/release/armeabi-v7a/src/main/cpp/helloworld/CMakeFiles/helloworld.dir

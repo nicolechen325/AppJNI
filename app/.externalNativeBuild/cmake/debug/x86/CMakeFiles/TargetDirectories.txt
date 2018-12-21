@@ -1,9 +1,0 @@
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/edit_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/chen_native_libs.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/debug/x86/src/main/cpp/algorithm/CMakeFiles/edit_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/debug/x86/src/main/cpp/algorithm/CMakeFiles/rebuild_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/debug/x86/src/main/cpp/algorithm/CMakeFiles/algorithm.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/debug/x86/src/main/cpp/helloworld/CMakeFiles/edit_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/debug/x86/src/main/cpp/helloworld/CMakeFiles/rebuild_cache.dir
-/Users/chenguang491/Documents/code/AppJNI/app/.externalNativeBuild/cmake/debug/x86/src/main/cpp/helloworld/CMakeFiles/helloworld.dir
