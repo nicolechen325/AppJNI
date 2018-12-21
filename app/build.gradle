@@ -3,18 +3,20 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.pa.chen.appjni"
+        applicationId "com.jni.app"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         externalNativeBuild {
             ndk {
-                abiFilters 'armeabi-v7a', 'arm64-v8a', 'armeabi', 'x86'//make project才会生成所有的so文件,如果是build,仅仅会生成当前运行机型的so文件
+                //make project才会生成所有的so文件,如果是build,仅仅会生成当前运行机型的so文件
+                //生成的文件在build/intermediates/cmake/debug/obj/armambi-xxx文件夹中。
+                abiFilters 'armeabi-v7a', 'arm64-v8a', 'armeabi', 'x86'
             }
             cmake {
                 arguments '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=system'
-                cFlags '-std=c99', '-DPNG_ARM_NEON_OPT=0',"-frtti -fexceptions"
+                cFlags '-std=c99', '-DPNG_ARM_NEON_OPT=0', "-frtti -fexceptions"
             }
         }
 
@@ -25,14 +27,15 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
-
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"

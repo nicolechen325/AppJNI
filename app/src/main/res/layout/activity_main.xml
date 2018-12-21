@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="JNI 简单测试"
-        android:textSize="14sp"
-        />
+        android:text="JNI 入口"
+        android:textSize="14sp" />
 
 </LinearLayout>

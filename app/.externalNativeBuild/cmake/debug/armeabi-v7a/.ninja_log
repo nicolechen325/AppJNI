@@ -1,0 +1,7 @@
+# ninja log v5
+1	48	0	src/main/cpp/helloworld/CMakeFiles/helloworld.dir/helloworld.c.o	d4dc49642af2d128
+48	76	0	../../../../build/intermediates/cmake/debug/obj/armeabi-v7a/libhelloworld.so	b25df2b3bdc3d2db
+0	47	0	src/main/cpp/algorithm/CMakeFiles/algorithm.dir/algorithm.c.o	3265c5d4ec235c48
+47	73	0	../../../../build/intermediates/cmake/debug/obj/armeabi-v7a/libalgorithm.so	b94d34ef4b3612f7
+73	177	0	CMakeFiles/chen_native_libs.dir/src/main/cpp/native_lib.cpp.o	38d6c8174aa05d8c
+177	217	0	../../../../build/intermediates/cmake/debug/obj/armeabi-v7a/libchen_native_libs.so	4df668ff540baae8
