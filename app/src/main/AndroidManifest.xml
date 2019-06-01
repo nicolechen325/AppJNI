@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SampleJNIActivity"/>
+        <activity android:name=".JniSampleActivity"/>
 
     </application>
 

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_jni"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:gravity="center"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_sample_jni"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="JNI 入口"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F4F4F4"
+        android:padding="10dp"
+        android:text="和JNI相关的界面入口"
         android:textSize="14sp" />
 
 </LinearLayout>
