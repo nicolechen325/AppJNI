@@ -33,14 +33,15 @@ JNIEXPORT jstring JNICALL
 Java_com_jni_app_JniCls_nativeGetStrFromJNI(JNIEnv *env, jobject /* this */) {
     const char *hello = "Hello World ,I come from JNI!";
     LOGV("nativeGetHelloWorld, %s", hello);
-    double base = 4;
-    int exponent = 3;
-    double result = power(base, exponent);//次方计算,64
-    double output = add(result, 120.0);//加法计算，184
-    double output2 = sub(output, 12.0);//减法计算，172
+    jdouble base = 4;
+    jint exponent = 3;
+    jdouble result = power(base, exponent);//次方计算,64
+    jdouble output = add(result, 120.0);//加法计算，184
+    jdouble output2 = sub(output, 12.0);//减法计算，172
     hello_world(hello);
     LOGV("nativeGetHelloWorld, %g %d is %g\n", base, exponent, output2);
-    return env->NewStringUTF(hello);
+    jstring jstr = env->NewStringUTF(hello);
+    return jstr;
 }
 
 /**************************************JNI中设置Java对象内部变量***************************************/
@@ -74,18 +75,33 @@ Java_com_jni_app_JniCls_nativeSetJObjectValueInNative(JNIEnv *env, jclass clazz,
     env->SetByteField(obj, fid_byte, 0x10);
     //布尔值取反
     env->SetBooleanField(obj, fid_boolean, (jboolean) (!value_boolean));
-    //变大写
-    env->SetCharField(obj, fid_char, (jchar) (value_char + 31));
-
-    const jchar *bestring = env->GetStringChars(value_string,NULL);
+    //变大写？出现啊x乱码
+    env->SetCharField(obj, fid_char, (jchar) (value_char));
+    //jstring拷贝到jchar字符串指针，注释掉的是第一种，const，不可变，对应String不可变。
+    //const jchar *bestring = env->GetStringChars(value_string, NULL);
     //获取jstring长度
-    jint len = env->GetStringLength(value_string);
-//    env->ReleaseStringChars(value_string,bestring);
-//    wstring wstring
-    //倒序字符串
-
-    jstring beString = env->NewString(bestring,len);
-    env->SetObjectField(obj, fid_string, beString);
+    jsize len = env->GetStringLength(value_string);
+    //下面使用第二种，新创建内存
+    jchar *bestring = new jchar[len + 1];
+    //设置已\0结尾，否则会出现乱码
+    bestring[len] = L'\0';
+    //初始化字符串指针
+    env->GetStringRegion(value_string, 0, len, bestring);
+    //env->ReleaseStringChars(value_string,bestring);
+    //jchar字符串指针指向字符串翻转
+    for (jint i = 0, j = len - 1; i < j; i++, j--) {
+        jchar temp = bestring[i];
+        bestring[i] = bestring[j];
+        bestring[j] = temp;
+    }
+    for (jsize i = 0; i < len; i++) {
+        LOGV("value from Java function,%d,%c", len, bestring[i]);
+    }
+    //反转后获取新的字符串
+    jstring newstring = env->NewString(bestring, len);
+    delete[] bestring;
+    //新字符串设置到Java层变量中
+    env->SetObjectField(obj, fid_string, newstring);
 
 };
 
@@ -114,12 +130,25 @@ Java_com_jni_app_JniCls_nativeRetriveJava(JNIEnv *env, jclass clazz, jobject obj
 JNIEXPORT jbyteArray JNICALL
 Java_com_jni_app_JniCls_nativeParameterArray(JNIEnv *env, jobject obj,
                                              jbyteArray jbyteArray1) {
-    jbyte *receivedbyte = env->GetByteArrayElements(jbyteArray1, 0);
-    jsize jsize1 = env->GetArrayLength(jbyteArray1);
-    for (int i = 0; i < jsize1; i++) {
+    //将Java层基本类型数组转换到C++数组。获取jbyteArray对象的指针
+    jbyte *byte_array = env->GetByteArrayElements(jbyteArray1, 0);
+    //获取数组长度
+    jsize len = env->GetArrayLength(jbyteArray1);
+    //新建一个jbytearray数组
+    jbyteArray jbyte_array_new = env->NewByteArray(len);
+    jbyte *byte_array_new = env->GetByteArrayElements(jbyte_array_new, NULL);
+    //传入数组偶数item存储新数组中
+    jint count = 0;
+    for (jsize j = 0; j < len; j++) {
+        if (j % 2 == 0) {
+            byte_array_new[count++] = byte_array[j];
+        }
+    }
+    LOGV("value from Java function,%s", "c" + byte_array_new[0]);
+    for (int i = 0; i < len; i++) {
         //int value = receivedbyte[i] & 0xFF;
         //取反,例如，0x00001100,取反后为0x11110011
-        jbyte jbyte = (~receivedbyte[i]);
+        jbyte jbyte = (~byte_array[i]);
         env->SetByteArrayRegion(jbyteArray1, i, 1, &jbyte);
     }
     return jbyteArray1;
